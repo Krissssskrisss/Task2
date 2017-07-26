@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var middlewares = require('./middlewares');
+var userModule = require('./lib/user ');
 
 var index = require('./routes/index');
 var user = require('./routes/user');
