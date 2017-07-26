@@ -1,5 +1,5 @@
 var emailValidator = require('./email-validator');
 
-module.exports.middlewares = {
+module.exports = {
   emailValidator
 };

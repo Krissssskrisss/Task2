@@ -11,4 +11,4 @@ var emailValidator = function(req, res, next) {
   }
 };
 
-module.exports.emailValidator = emailValidator;
+module.exports = emailValidator;
