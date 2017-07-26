@@ -1,10 +1,14 @@
 var emailRegexp  = new RegExp('.+\@.+\..+');
+var err = new Error('invalid email');
+
 var emailValidator = function(req, res, next) {
-  if ((req.method === 'post' && req.body.email.match(emailRegexp)) || (req.method === 'put' && req.body.email.match(emailRegexp))) {
+  var { email } =  req.body;
+  var isValidEmail = emailRegexp.test(email);
+  if ((req.method === 'POST' && isValidEmail) || (req.method === 'PUT' && isValidEmail)) {
     next();
   } else {
-    next();
+    next(err);
   }
-}
+};
 
 module.exports.emailValidator = emailValidator;
