@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var emailValidator = require('./middlewares/email-validator');
-var middlewares = require('./middlewares')
+var middlewares = require('./middlewares');
 
 var index = require('./routes/index');
 var user = require('./routes/user');
