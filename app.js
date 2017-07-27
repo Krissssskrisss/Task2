@@ -1,17 +1,15 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var middlewares = require('./middlewares');
-var userModule = require('./lib/user ');
+const middlewares = require('./middlewares');
+const index = require('./routes/index');
+const user = require('./routes/user');
 
-var index = require('./routes/index');
-var user = require('./routes/user');
-
-var app = express();
+let app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -19,8 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', index);
 app.use('/user', middlewares.emailValidator,  user);
-app.use('/user', user);
 
 module.exports = app;

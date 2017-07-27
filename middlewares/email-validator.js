@@ -1,11 +1,14 @@
-var emailRegexp  = new RegExp('.+\@.+\..+');
-var err = new Error('invalid email');
+const emailRegexp  = new RegExp('.+\@.+\..+');
+const err = new Error('invalid email');
 
-var emailValidator = function(req, res, next) {
-  var { email } =  req.body;
-  var isValidEmail = emailRegexp.test(email);
-  if ((req.method === 'POST' && isValidEmail) || (req.method === 'PUT' && isValidEmail)) {
+const emailValidator = function(req, res, next) {
+  const { email } =  req.body;
+  const isValidEmail = emailRegexp.test(email);
+  const method = req.method;
+  if (!(method=== 'POST' || method === 'PUT')) {
     next();
+  } else  if ((method === 'POST' && isValidEmail) || (method === 'PUT')) {
+    next()
   } else {
     next(err);
   }
