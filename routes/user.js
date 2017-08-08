@@ -1,21 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const User = require('../lib/user');
+const userController = new User();
+
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('Hi get');
-});
+router.get('/', userController.get);
 
-router.post('/', function(req, res, next) {
-  res.send('Hi post');
-});
+router.post('/', userController.add);
 
-router.put('/', function(req, res, next) {
-  res.send('Hi put');
-});
+router.put('/', userController.update);
 
-router.delete('/', function(req, res, next) {
-  res.send('Hi delete');
-});
+router.delete('/', userController.delete);
 
 module.exports = router;
